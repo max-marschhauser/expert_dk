@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'config/router_manager/app_router_files/router_manager.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -9,32 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Expert DK',
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Expert DK - procjene vrijednosti nekretnina"),
-      ),
+      routerConfig: APPRouterManager.shared.router,
     );
   }
 }
