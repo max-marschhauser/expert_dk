@@ -1,3 +1,4 @@
+import 'package:expert_dk/widgets/base_page_widget.dart';
 import 'package:flutter/material.dart';
 
 class EDKAboutWidget extends StatelessWidget {
@@ -5,6 +6,6 @@ class EDKAboutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("about screen");
+    return const EDKBasePageWidget(child: Text("about screen"),);
   }
 }
