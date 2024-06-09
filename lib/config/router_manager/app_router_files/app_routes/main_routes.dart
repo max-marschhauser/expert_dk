@@ -1,3 +1,6 @@
+import 'package:expert_dk/screens/about/about.dart';
+import 'package:expert_dk/screens/contacts/contacts.dart';
+import 'package:expert_dk/screens/main/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,14 +10,16 @@ import '../app_routes.dart';
 
 enum APPMainRoute with MainGRRouteSegment {
   main,
-  main2,
+  about,
+  contacts,
   ;
 
   @override
   String get path {
     switch (this) {
       case main:
-      case main2:
+      case about:
+      case contacts:
         return name;
     }
   }
@@ -23,8 +28,11 @@ enum APPMainRoute with MainGRRouteSegment {
   String get localization {
     switch (this) {
       case main:
-      case main2:
-        return "browser title";
+        return "Ekspert DK - procjene nekretnina";
+      case about:
+        return "O nama";
+      case contacts:
+        return "Kontakt podaci";
     }
   }
 
@@ -32,8 +40,9 @@ enum APPMainRoute with MainGRRouteSegment {
   List<APPMainRoute> get subRoutes {
     switch (this) {
       case main:
-        return [main2];
-      case main2:
+        return [about, contacts];
+      case about:
+      case contacts:
         return [];
     }
   }
@@ -64,19 +73,23 @@ enum APPMainRoute with MainGRRouteSegment {
               child: Title(
                 title: appAppRoutes.browserTitleFromFullPath(state.fullPath ?? appAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
-                child: GestureDetector(
-                    onTap: () {
-                      context.go(APPMainRoute.main2.fullPath);
-                    },
-                    child: const Text("app route widget")),
+                child: const EDKMainWidget(),
               ),
             );
-          case main2:
+          case about:
             return NoTransitionPage(
               child: Title(
                 title: appAppRoutes.browserTitleFromFullPath(state.fullPath ?? appAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
-                child: const Text("app2 route widget"),
+                child: const EDKAboutWidget(),
+              ),
+            );
+          case contacts:
+            return NoTransitionPage(
+              child: Title(
+                title: appAppRoutes.browserTitleFromFullPath(state.fullPath ?? appAppRoutes.rootPath) ?? '',
+                color: Theme.of(context).primaryColor,
+                child: const EDKContactsWidget(),
               ),
             );
         }
