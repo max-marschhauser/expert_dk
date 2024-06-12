@@ -8,7 +8,7 @@ import '../../common_router_files/element_routes.dart';
 import '../app_route.dart';
 import '../app_routes.dart';
 
-enum APPMainRoute with MainGRRouteSegment {
+enum EDKMainRoute with MainGRRouteSegment {
   main,
   about,
   contacts,
@@ -37,7 +37,7 @@ enum APPMainRoute with MainGRRouteSegment {
   }
 
   @override
-  List<APPMainRoute> get subRoutes {
+  List<EDKMainRoute> get subRoutes {
     switch (this) {
       case main:
         return [about, contacts];
@@ -54,7 +54,7 @@ enum APPMainRoute with MainGRRouteSegment {
   String get goRoutePath => rootRoutes.contains(this) ? "/$path" : path;
 
   @override
-  String get fullPath => getFullPath(APPMainRoute.values);
+  String get fullPath => getFullPath(EDKMainRoute.values);
 
   APPRoute get erRoute => APPRoute(
         displayName: localization,

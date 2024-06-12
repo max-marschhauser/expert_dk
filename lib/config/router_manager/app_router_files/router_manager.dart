@@ -18,11 +18,11 @@ class APPRouterManager {
     navigatorKey: rootNavigatorKey,
     // refreshListenable: AppManager.shared.userMe,
     routes: [
-      APPMainRoute.main.goRoute,
+      EDKMainRoute.main.goRoute,
     ],
     redirect: (BuildContext context, GoRouterState state) {
-      if (state.fullPath == APPMainRoute.main.fullPath || state.fullPath == appAppRoutes.rootPath || state.fullPath == "") {
-        return APPMainRoute.main.fullPath;
+      if (state.fullPath == EDKMainRoute.main.fullPath || state.fullPath == appAppRoutes.rootPath || state.fullPath == "") {
+        return EDKMainRoute.main.fullPath;
       }
       return null;
     },
