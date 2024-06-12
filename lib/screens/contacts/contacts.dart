@@ -10,7 +10,11 @@ class EDKContactsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return EDKBasePageWidget(
       image: EDKImages.shared.mobitelRuka,
-      child: Text("contacts screen"),
+      child: const Column(
+        children: [
+          Text("contacts screen"),
+        ],
+      ),
     );
   }
 }

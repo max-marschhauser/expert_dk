@@ -49,17 +49,28 @@ class EDKBasePageWidget extends StatelessWidget {
           const SizedBox(width: 8),
         ],
       ),
-      body: Column(
-        children: [
-          Image.asset(
-            image,
-            height: 350,
-            width: double.infinity,
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
-          ),
-          Expanded(child: child),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(
+              image,
+              height: 350,
+              width: double.infinity,
+              fit: BoxFit.cover,
+              alignment: Alignment.center,
+            ),
+            child,
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Theme.of(context).primaryColorLight),
+              child: Text(
+                "EXPERT DK obrt za tehničko savjetovanje, vl. Dražen Krajlah, Učka 1, 31000 Osijek",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
