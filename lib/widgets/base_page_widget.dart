@@ -12,45 +12,45 @@ class EDKBasePageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).primaryColorLight,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColorDark,
+        title: Text(
+          "Expert DK - procjene nekretnina",
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
+        ),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Image.asset(
+            EDKImages.shared.logo,
+          ),
+        ),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              context.go(EDKMainRoute.main.fullPath);
+            },
+            child: Text("home"),
+          ),
+          const SizedBox(width: 8),
+          ElevatedButton(
+            onPressed: () {
+              context.go(EDKMainRoute.about.fullPath);
+            },
+            child: Text("about"),
+          ),
+          const SizedBox(width: 8),
+          ElevatedButton(
+            onPressed: () {
+              context.go(EDKMainRoute.contacts.fullPath);
+            },
+            child: Text("contacts"),
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
       body: Column(
         children: [
-          SizedBox(
-            height: 50,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(width: 16),
-                Image.asset(
-                  EDKImages.shared.logo,
-                  width: 50,
-                  height: 50,
-                ),
-                const SizedBox(width: 16),
-                const Text("Expert DK - procjene nekretnina"),
-                const SizedBox(width: 16),
-                const Spacer(),
-                ElevatedButton(
-                  onPressed: () {
-                    context.go(EDKMainRoute.main.fullPath);
-                  },
-                  child: Text("home"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    context.go(EDKMainRoute.about.fullPath);
-                  },
-                  child: Text("about"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    context.go(EDKMainRoute.contacts.fullPath);
-                  },
-                  child: Text("contacts"),
-                ),
-              ],
-            ),
-          ),
           Image.asset(
             image,
             height: 350,
