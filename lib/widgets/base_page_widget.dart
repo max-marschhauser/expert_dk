@@ -3,11 +3,19 @@ import 'package:expert_dk/config/styles/images.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'container.dart';
+
 class EDKBasePageWidget extends StatelessWidget {
   final Widget child;
   final String image;
+  final String titleText;
 
-  const EDKBasePageWidget({required this.child, required this.image, super.key});
+  const EDKBasePageWidget({
+    required this.titleText,
+    required this.child,
+    required this.image,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +23,7 @@ class EDKBasePageWidget extends StatelessWidget {
       focusNode: FocusNode(),
       selectionControls: desktopTextSelectionControls,
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
           bottom: PreferredSize(
@@ -63,16 +72,16 @@ class EDKBasePageWidget extends StatelessWidget {
             const SizedBox(width: 8),
             ElevatedButton(
               onPressed: () {
-                context.go(EDKHomeRoute.about.fullPath);
+                context.go(EDKHomeRoute.kvalifikacije.fullPath);
               },
-              child: Text("about"),
+              child: Text("kvalifikacije"),
             ),
             const SizedBox(width: 8),
             ElevatedButton(
               onPressed: () {
-                context.go(EDKHomeRoute.contacts.fullPath);
+                context.go(EDKHomeRoute.kontakt.fullPath);
               },
-              child: Text("contacts"),
+              child: Text("kontakt"),
             ),
             const SizedBox(width: 8),
           ],
@@ -82,12 +91,22 @@ class EDKBasePageWidget extends StatelessWidget {
             children: [
               Image.asset(
                 image,
-                height: 350,
+                height: MediaQuery.of(context).size.height * 0.3,
                 width: double.infinity,
                 fit: BoxFit.cover,
                 alignment: Alignment.center,
               ),
-              child,
+              SizedBox(
+                width: double.infinity,
+                child: EDKContainer.primaryContainer(
+                  text: titleText,
+                  textStyle: Theme.of(context).textTheme.headlineLarge!,
+                  context: context,
+                ),
+              ),
+              Center(
+                child: child,
+              ),
               _footerContainer(context),
             ],
           ),

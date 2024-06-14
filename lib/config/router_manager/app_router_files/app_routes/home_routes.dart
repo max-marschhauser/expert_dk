@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 import '../../../../screens/about_screen/about_widget.dart';
 import '../../../../screens/contacts_screen/contacts_widget.dart';
 import '../../../../screens/home_screen/home_widget.dart';
@@ -11,16 +10,16 @@ import '../app_routes.dart';
 
 enum EDKHomeRoute with MainGRRouteSegment {
   home,
-  about,
-  contacts,
+  kvalifikacije,
+  kontakt,
   ;
 
   @override
   String get path {
     switch (this) {
       case home:
-      case about:
-      case contacts:
+      case kvalifikacije:
+      case kontakt:
         return name;
     }
   }
@@ -30,10 +29,10 @@ enum EDKHomeRoute with MainGRRouteSegment {
     switch (this) {
       case home:
         return "Ekspert DK - procjene nekretnina";
-      case about:
-        return "O nama";
-      case contacts:
-        return "Kontakt podaci";
+      case kvalifikacije:
+        return "Kvalifikacije";
+      case kontakt:
+        return "Kontakt";
     }
   }
 
@@ -41,9 +40,9 @@ enum EDKHomeRoute with MainGRRouteSegment {
   List<EDKHomeRoute> get subRoutes {
     switch (this) {
       case home:
-        return [about, contacts];
-      case about:
-      case contacts:
+        return [kvalifikacije, kontakt];
+      case kvalifikacije:
+      case kontakt:
         return [];
     }
   }
@@ -77,7 +76,7 @@ enum EDKHomeRoute with MainGRRouteSegment {
                 child: const EDKMainWidget(),
               ),
             );
-          case about:
+          case kvalifikacije:
             return NoTransitionPage(
               child: Title(
                 title: appAppRoutes.browserTitleFromFullPath(state.fullPath ?? appAppRoutes.rootPath) ?? '',
@@ -85,7 +84,7 @@ enum EDKHomeRoute with MainGRRouteSegment {
                 child: const EDKAboutWidget(),
               ),
             );
-          case contacts:
+          case kontakt:
             return NoTransitionPage(
               child: Title(
                 title: appAppRoutes.browserTitleFromFullPath(state.fullPath ?? appAppRoutes.rootPath) ?? '',

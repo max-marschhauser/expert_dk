@@ -8,23 +8,52 @@ class EDKContactsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle textStyle = Theme.of(context).textTheme.titleLarge!.copyWith(
+          color: Theme.of(context).colorScheme.primary,
+        );
+
     return EDKBasePageWidget(
       image: EDKImages.shared.mobitelRuka,
+      titleText: 'Kontakt',
       child: Column(
         children: [
-          Row(
-            children: [
-              const Expanded(
-                child: Column(
-                  children: [
-                    Text("kontakt"),
-                    Text("Dražen Krajlah, mag.ing.aedif.\nUčka 1, 31000 Osijek\nGSM: 098 195 44 11\nMAIL: drazen.krajlah@gmail.com\nWEB: www.expertdk.hr"),
-                  ],
+          Padding(
+            padding: const EdgeInsets.all(64),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Dražen Krajlah, mag.ing.aedif.", style: textStyle),
+                        const SizedBox(height: 12),
+                        Text("Učka 1, 31000 Osijek", style: textStyle),
+                        const SizedBox(height: 12),
+                        Text("GSM: 098 195 44 11", style: textStyle),
+                        const SizedBox(height: 12),
+                        Text("MAIL: drazen.krajlah@gmail.com", style: textStyle),
+                        const SizedBox(height: 12),
+                        Text("WEB: www.expertdk.hr", style: textStyle),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-              Expanded(child: Image.asset(EDKImages.shared.kalkucaPlava)),
-              const Expanded(child: Text("EXPERT DK, obrt za tehničko savjetovanje\nvl. Dražen Krajlah")),
-            ],
+                Expanded(
+                    child: Image.asset(
+                  EDKImages.shared.kalkucaPlava,
+                  height: 250,
+                )),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      "EXPERT DK, obrt za tehničko savjetovanje\nvl. Dražen Krajlah",
+                      style: textStyle,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
