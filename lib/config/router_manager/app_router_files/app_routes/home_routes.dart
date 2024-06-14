@@ -1,9 +1,10 @@
-import 'package:expert_dk/screens/about/about.dart';
-import 'package:expert_dk/screens/contacts/contacts.dart';
-import 'package:expert_dk/screens/main/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+
+import '../../../../screens/about_screen/about_widget.dart';
+import '../../../../screens/contacts_screen/contacts_widget.dart';
+import '../../../../screens/home_screen/home_widget.dart';
 import '../../common_router_files/element_routes.dart';
 import '../app_route.dart';
 import '../app_routes.dart';
