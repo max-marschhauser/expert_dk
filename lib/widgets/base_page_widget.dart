@@ -1,4 +1,4 @@
-import 'package:expert_dk/config/router_manager/app_router_files/app_routes/main_routes.dart';
+import 'package:expert_dk/config/router_manager/app_router_files/app_routes/home_routes.dart';
 import 'package:expert_dk/config/styles/images.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -28,21 +28,21 @@ class EDKBasePageWidget extends StatelessWidget {
         actions: [
           ElevatedButton(
             onPressed: () {
-              context.go(EDKMainRoute.main.fullPath);
+              context.go(EDKHomeRoute.home.fullPath);
             },
             child: Text("home"),
           ),
           const SizedBox(width: 8),
           ElevatedButton(
             onPressed: () {
-              context.go(EDKMainRoute.about.fullPath);
+              context.go(EDKHomeRoute.about.fullPath);
             },
             child: Text("about"),
           ),
           const SizedBox(width: 8),
           ElevatedButton(
             onPressed: () {
-              context.go(EDKMainRoute.contacts.fullPath);
+              context.go(EDKHomeRoute.contacts.fullPath);
             },
             child: Text("contacts"),
           ),

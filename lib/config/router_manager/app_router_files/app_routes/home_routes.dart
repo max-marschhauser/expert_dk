@@ -8,8 +8,8 @@ import '../../common_router_files/element_routes.dart';
 import '../app_route.dart';
 import '../app_routes.dart';
 
-enum EDKMainRoute with MainGRRouteSegment {
-  main,
+enum EDKHomeRoute with MainGRRouteSegment {
+  home,
   about,
   contacts,
   ;
@@ -17,7 +17,7 @@ enum EDKMainRoute with MainGRRouteSegment {
   @override
   String get path {
     switch (this) {
-      case main:
+      case home:
       case about:
       case contacts:
         return name;
@@ -27,7 +27,7 @@ enum EDKMainRoute with MainGRRouteSegment {
   @override
   String get localization {
     switch (this) {
-      case main:
+      case home:
         return "Ekspert DK - procjene nekretnina";
       case about:
         return "O nama";
@@ -37,9 +37,9 @@ enum EDKMainRoute with MainGRRouteSegment {
   }
 
   @override
-  List<EDKMainRoute> get subRoutes {
+  List<EDKHomeRoute> get subRoutes {
     switch (this) {
-      case main:
+      case home:
         return [about, contacts];
       case about:
       case contacts:
@@ -48,13 +48,13 @@ enum EDKMainRoute with MainGRRouteSegment {
   }
 
   List<MainGRRouteSegment> get rootRoutes => [
-        main,
+        home,
       ];
 
   String get goRoutePath => rootRoutes.contains(this) ? "/$path" : path;
 
   @override
-  String get fullPath => getFullPath(EDKMainRoute.values);
+  String get fullPath => getFullPath(EDKHomeRoute.values);
 
   APPRoute get erRoute => APPRoute(
         displayName: localization,
@@ -68,7 +68,7 @@ enum EDKMainRoute with MainGRRouteSegment {
       path: goRoutePath,
       pageBuilder: (context, state) {
         switch (this) {
-          case main:
+          case home:
             return NoTransitionPage(
               child: Title(
                 title: appAppRoutes.browserTitleFromFullPath(state.fullPath ?? appAppRoutes.rootPath) ?? '',

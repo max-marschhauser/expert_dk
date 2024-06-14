@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_routes.dart';
-import 'app_routes/main_routes.dart';
+import 'app_routes/home_routes.dart';
 
 GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
@@ -18,11 +18,11 @@ class APPRouterManager {
     navigatorKey: rootNavigatorKey,
     // refreshListenable: AppManager.shared.userMe,
     routes: [
-      EDKMainRoute.main.goRoute,
+      EDKHomeRoute.home.goRoute,
     ],
     redirect: (BuildContext context, GoRouterState state) {
-      if (state.fullPath == EDKMainRoute.main.fullPath || state.fullPath == appAppRoutes.rootPath || state.fullPath == "") {
-        return EDKMainRoute.main.fullPath;
+      if (state.fullPath == EDKHomeRoute.home.fullPath || state.fullPath == appAppRoutes.rootPath || state.fullPath == "") {
+        return EDKHomeRoute.home.fullPath;
       }
       return null;
     },
