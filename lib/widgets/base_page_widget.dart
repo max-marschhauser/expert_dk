@@ -11,73 +11,86 @@ class EDKBasePageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        title: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: GestureDetector(
+    return SelectableRegion(
+      focusNode: FocusNode(),
+      selectionControls: desktopTextSelectionControls,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          bottom: PreferredSize(
+              preferredSize: const Size(0, 1),
+              child: Container(
+                height: 1,
+                color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+              )),
+          title: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () {
+                context.go(EDKHomeRoute.home.fullPath);
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Text(
+                  "Expert DK - procjene nekretnina",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ),
+          ),
+          leading: InkWell(
+            hoverColor: Theme.of(context).colorScheme.secondary,
+            splashColor: Theme.of(context).colorScheme.primary,
+            hoverDuration: const Duration(milliseconds: 250),
             onTap: () {
               context.go(EDKHomeRoute.home.fullPath);
             },
-            child: Text(
-              "Expert DK - procjene nekretnina",
-              style: Theme.of(context).textTheme.titleLarge,
+            child: Container(
+              color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(
+                EDKImages.shared.logo,
+              ),
             ),
           ),
-        ),
-        leading: InkWell(
-          hoverColor: Theme.of(context).colorScheme.secondary,
-          splashColor: Theme.of(context).colorScheme.primary,
-          hoverDuration: const Duration(milliseconds: 250),
-          onTap: () {
-            context.go(EDKHomeRoute.home.fullPath);
-          },
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            child: Image.asset(
-              EDKImages.shared.logo,
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                context.go(EDKHomeRoute.home.fullPath);
+              },
+              child: Text("home"),
             ),
-          ),
-        ),
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              context.go(EDKHomeRoute.home.fullPath);
-            },
-            child: Text("home"),
-          ),
-          const SizedBox(width: 8),
-          ElevatedButton(
-            onPressed: () {
-              context.go(EDKHomeRoute.about.fullPath);
-            },
-            child: Text("about"),
-          ),
-          const SizedBox(width: 8),
-          ElevatedButton(
-            onPressed: () {
-              context.go(EDKHomeRoute.contacts.fullPath);
-            },
-            child: Text("contacts"),
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.asset(
-              image,
-              height: 350,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              alignment: Alignment.center,
+            const SizedBox(width: 8),
+            ElevatedButton(
+              onPressed: () {
+                context.go(EDKHomeRoute.about.fullPath);
+              },
+              child: Text("about"),
             ),
-            child,
-            _footerContainer(context),
+            const SizedBox(width: 8),
+            ElevatedButton(
+              onPressed: () {
+                context.go(EDKHomeRoute.contacts.fullPath);
+              },
+              child: Text("contacts"),
+            ),
+            const SizedBox(width: 8),
           ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Image.asset(
+                image,
+                height: 350,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
+              ),
+              child,
+              _footerContainer(context),
+            ],
+          ),
         ),
       ),
     );
