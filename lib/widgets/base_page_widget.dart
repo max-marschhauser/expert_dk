@@ -12,17 +12,33 @@ class EDKBasePageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColorLight,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColorDark,
-        title: Text(
-          "Expert DK - procjene nekretnina",
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: () {
+              context.go(EDKHomeRoute.home.fullPath);
+            },
+            child: Text(
+              "Expert DK - procjene nekretnina",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
         ),
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: Image.asset(
-            EDKImages.shared.logo,
+        leading: InkWell(
+          hoverColor: Theme.of(context).colorScheme.secondary,
+          splashColor: Theme.of(context).colorScheme.primary,
+          hoverDuration: const Duration(milliseconds: 250),
+          onTap: () {
+            context.go(EDKHomeRoute.home.fullPath);
+          },
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            child: Image.asset(
+              EDKImages.shared.logo,
+            ),
           ),
         ),
         actions: [
@@ -60,17 +76,22 @@ class EDKBasePageWidget extends StatelessWidget {
               alignment: Alignment.center,
             ),
             child,
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Theme.of(context).primaryColorLight),
-              child: Text(
-                "EXPERT DK obrt za tehničko savjetovanje, vl. Dražen Krajlah, Učka 1, 31000 Osijek",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ),
+            _footerContainer(context),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _footerContainer(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary),
+      child: Text(
+        "EXPERT DK obrt za tehničko savjetovanje, vl. Dražen Krajlah, Učka 1, 31000 Osijek",
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.titleMedium,
       ),
     );
   }
