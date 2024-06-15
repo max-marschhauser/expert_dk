@@ -8,7 +8,7 @@ import 'config/styles/theme.dart';
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  setPathUrlStrategy();
+  // setPathUrlStrategy();
   runApp(const MyApp());
   FlutterNativeSplash.remove();
 }

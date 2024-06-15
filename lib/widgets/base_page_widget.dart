@@ -67,21 +67,21 @@ class EDKBasePageWidget extends StatelessWidget {
               onPressed: () {
                 context.go(EDKHomeRoute.home.fullPath);
               },
-              child: Text("home"),
+              child: Text("Početna stranica"),
             ),
             const SizedBox(width: 8),
             ElevatedButton(
               onPressed: () {
                 context.go(EDKHomeRoute.kvalifikacije.fullPath);
               },
-              child: Text("kvalifikacije"),
+              child: Text("Kvalifikacije"),
             ),
             const SizedBox(width: 8),
             ElevatedButton(
               onPressed: () {
                 context.go(EDKHomeRoute.kontakt.fullPath);
               },
-              child: Text("kontakt"),
+              child: Text("Kontakt"),
             ),
             const SizedBox(width: 8),
           ],
@@ -91,7 +91,7 @@ class EDKBasePageWidget extends StatelessWidget {
             children: [
               Image.asset(
                 image,
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: MediaQuery.of(context).size.height * 0.4,
                 width: double.infinity,
                 fit: BoxFit.cover,
                 alignment: Alignment.center,

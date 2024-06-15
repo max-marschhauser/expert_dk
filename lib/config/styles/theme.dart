@@ -5,7 +5,7 @@ ThemeData themeData = ThemeData(
     seedColor: const Color.fromRGBO(255, 0, 0, 1.0),
     primary: const Color.fromRGBO(0, 54, 144, 1),
     secondary: const Color.fromRGBO(214, 234, 255, 1),
-    tertiary: const Color.fromRGBO(255, 127, 94, 1.0),
+    tertiary: const Color.fromRGBO(255, 0, 0, 1.0),
   ),
   textTheme: const TextTheme(
     bodySmall: TextStyle(color: Colors.white),

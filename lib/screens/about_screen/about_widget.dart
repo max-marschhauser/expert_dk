@@ -17,14 +17,13 @@ class EDKAboutWidget extends StatelessWidget {
         children: [
           EDKContainer.secondaryContainer(
               text:
-                  "Dražen Krajlah, magistar inženjer građevinarstva\nStalni sudski vještak za građevinarstvo i procjenitelj vrijednosti nekretnina\nčlan Hrvatskog društva sudskih vještaka i procjenitelja\nviše od 20 godina iskustva na procjenama nekretnina\niskustvo stečeno u financijskom sektoru te stjecanje znanja procjenjivanja proslovih nekretnina kroz ekonomski aspekt",
+                  "Dražen Krajlah, magistar inženjer građevinarstva\n\nStalni sudski vještak za građevinarstvo i procjenitelj vrijednosti nekretnina\n\nČlan Hrvatskog društva sudskih vještaka i procjenitelja\n\nViše od 20 godina iskustva na procjenama nekretnina\n\nIskustvo stečeno u financijskom sektoru te stjecanje znanja procjenjivanja proslovih nekretnina kroz ekonomski aspekt",
               textStyle: Theme.of(context).textTheme.bodyLarge!,
               context: context),
-          EDKContainer.primaryContainer(
-            subtext: "Zadovoljstvo svakog klijenta pružanjem kvalitetne profesionalnu usluge uz poštivanje zakonskih propisa u području procjena vrijednosti nekretnina",
-            text: "MISIJA",
-            textStyle: Theme.of(context).textTheme.titleLarge!,
-            subtextStyle: Theme.of(context).textTheme.bodyLarge!,
+          EDKContainer.primaryContainer(text: "Misija", textStyle: Theme.of(context).textTheme.headlineLarge!, context: context),
+          EDKContainer.secondaryContainer(
+            text: "Zadovoljstvo svakog klijenta pružanjem kvalitetne profesionalnu usluge uz poštivanje zakonskih propisa u području procjena vrijednosti nekretnina",
+            textStyle: Theme.of(context).textTheme.bodyLarge!,
             context: context,
           ),
         ],
