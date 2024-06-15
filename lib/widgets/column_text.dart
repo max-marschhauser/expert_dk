@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class EDKColumnText extends StatelessWidget {
   final String text;
   final double screenWidth;
+  final bool hasIndicator;
 
   const EDKColumnText({
     required this.text,
     required this.screenWidth,
+    required this.hasIndicator,
     super.key,
   });
 
@@ -17,8 +19,8 @@ class EDKColumnText extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(width: 10, height: 10, color: Theme.of(context).colorScheme.secondary),
-          const SizedBox(width: 16),
+          hasIndicator ? Container(width: 10, height: 10, color: Theme.of(context).colorScheme.secondary) : const SizedBox(),
+          SizedBox(width: hasIndicator ? 16 : 0),
           SizedBox(
             width: screenWidth > 1400
                 ? screenWidth / 4
