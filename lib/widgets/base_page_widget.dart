@@ -43,19 +43,11 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
                 ),
               ),
               centerTitle: false,
-              title: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () {
-                    context.go(EDKHomeRoute.home.fullPath);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Text(
-                      "Expert DK - procjene nekretnina",
-                      style: MediaQuery.of(context).size.width > 1000 ? Theme.of(context).textTheme.titleLarge : Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
+              title: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Text(
+                  "Expert DK - procjene nekretnina",
+                  style: MediaQuery.of(context).size.width > 1000 ? Theme.of(context).textTheme.titleLarge : Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
               leading: InkWell(
@@ -74,17 +66,20 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
                 ),
               ),
               actions: [
-                GestureDetector(
-                  onTap: () {
-                    _showMenu = !_showMenu;
-                    setState(() {});
-                  },
-                  child: Container(
-                    color: Colors.transparent,
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    child: Icon(
-                      _showMenu ? Icons.close : Icons.menu,
-                      color: Theme.of(context).colorScheme.secondary,
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () {
+                      _showMenu = !_showMenu;
+                      setState(() {});
+                    },
+                    child: Container(
+                      color: Colors.transparent,
+                      padding: const EdgeInsets.symmetric(horizontal: 32),
+                      child: Icon(
+                        _showMenu ? Icons.close : Icons.menu,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                     ),
                   ),
                 ),
