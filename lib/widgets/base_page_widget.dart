@@ -26,6 +26,12 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 1100) {
+      _showMenu = false;
+      setState(() {});
+    }
+
     return SelectableRegion(
       focusNode: FocusNode(),
       selectionControls: desktopTextSelectionControls,
@@ -47,7 +53,7 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
                   "EXPERT DK - procjene nekretnina",
-                  style: MediaQuery.of(context).size.width > 1000 ? Theme.of(context).textTheme.titleLarge : Theme.of(context).textTheme.bodyLarge,
+                  style: screenWidth > 1000 ? Theme.of(context).textTheme.titleLarge : Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
               leading: InkWell(
@@ -65,25 +71,49 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
                   ),
                 ),
               ),
-              actions: [
-                MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    onTap: () {
-                      _showMenu = !_showMenu;
-                      setState(() {});
-                    },
-                    child: Container(
-                      color: Colors.transparent,
-                      padding: const EdgeInsets.symmetric(horizontal: 32),
-                      child: Icon(
-                        _showMenu ? Icons.close : Icons.menu,
-                        color: Theme.of(context).colorScheme.secondary,
+              actions: screenWidth < 1100
+                  ? [
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            _showMenu = !_showMenu;
+                            setState(() {});
+                          },
+                          child: Container(
+                            color: Colors.transparent,
+                            padding: const EdgeInsets.symmetric(horizontal: 32),
+                            child: Icon(
+                              _showMenu ? Icons.close : Icons.menu,
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                          ),
+                        ),
+                      )
+                    ]
+                  : [
+                      _menuItem(
+                          isTabBar: true,
+                          text: "Početna stranica",
+                          function: () {
+                            context.go(EDKHomeRoute.home.fullPath);
+                          }),
+                      const SizedBox(width: 20),
+                      _menuItem(
+                          isTabBar: true,
+                          text: "Kvalifikacije",
+                          function: () {
+                            context.go(EDKHomeRoute.kvalifikacije.fullPath);
+                          }),
+                      const SizedBox(width: 20),
+                      _menuItem(
+                        isTabBar: true,
+                        text: "Kontakt",
+                        function: () {
+                          context.go(EDKHomeRoute.kontakt.fullPath);
+                        },
                       ),
-                    ),
-                  ),
-                ),
-              ],
+                    ],
             ),
             body: SingleChildScrollView(
               child: Column(
@@ -123,16 +153,19 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _menuItem(
+                      isTabBar: false,
                       text: "Početna stranica",
                       function: () {
                         context.go(EDKHomeRoute.home.fullPath);
                       }),
                   _menuItem(
+                      isTabBar: false,
                       text: "Kvalifikacije",
                       function: () {
                         context.go(EDKHomeRoute.kvalifikacije.fullPath);
                       }),
                   _menuItem(
+                      isTabBar: false,
                       text: "Kontakt",
                       function: () {
                         context.go(EDKHomeRoute.kontakt.fullPath);
@@ -146,7 +179,7 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
     );
   }
 
-  Widget _menuItem({required String text, required Function function}) {
+  Widget _menuItem({required bool isTabBar, required String text, required Function function}) {
     return Material(
       child: InkWell(
         hoverColor: Theme.of(context).colorScheme.secondary,
@@ -159,12 +192,12 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
         },
         child: Container(
           decoration: BoxDecoration(color: Theme.of(context).colorScheme.secondary.withOpacity(0.5), border: Border(bottom: BorderSide(color: Theme.of(context).colorScheme.primary))),
-          width: double.infinity,
+          width: isTabBar ? 200 : double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: Text(
             text,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary),
-            textAlign: TextAlign.end,
+            textAlign: isTabBar ? TextAlign.center : TextAlign.end,
           ),
         ),
       ),
