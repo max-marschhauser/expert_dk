@@ -46,7 +46,7 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
               title: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
-                  "Expert DK - procjene nekretnina",
+                  "EXPERT DK - procjene nekretnina",
                   style: MediaQuery.of(context).size.width > 1000 ? Theme.of(context).textTheme.titleLarge : Theme.of(context).textTheme.bodyLarge,
                 ),
               ),

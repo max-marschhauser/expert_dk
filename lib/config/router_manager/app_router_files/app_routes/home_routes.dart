@@ -28,7 +28,7 @@ enum EDKHomeRoute with MainGRRouteSegment {
   String get localization {
     switch (this) {
       case home:
-        return "Ekspert DK - procjene nekretnina";
+        return "EXPERT DK - procjene nekretnina";
       case kvalifikacije:
         return "Kvalifikacije";
       case kontakt:
