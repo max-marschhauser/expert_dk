@@ -210,7 +210,7 @@ class _EDKBasePageWidgetState extends State<EDKBasePageWidget> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary),
       child: Text(
-        "EXPERT DK obrt za tehničko savjetovanje, vl. Dražen Krajlah, Učka 1, 31000 Osijek",
+        "EXPERT DK obrt za tehničko savjetovanje, vl. Dražen Krajlah\nUčka 1, 31000 Osijek\n+385 98 195 44 11",
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.titleMedium,
       ),
